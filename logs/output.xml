@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.2 on win32)" generated="2024-05-22T17:44:36.488455" rpa="false" schemaversion="5">
+<suite id="s1" name="S01 API" source="C:\mb_robotizando\robot-API\Tests\S01_API.robot">
+<test id="s1-t1" name="CT01: Realizar uma requisição GET consultando lista de usuários" line="7">
+<kw name="Dado que estou conectado na API" owner="API_Resource">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-05-22T17:44:37.462077" level="INFO">Creating Session using : alias=lista_users, url=https://reqres.in/api/users?page=2, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2024-05-22T17:44:37.462077" level="INFO">${ALIAS} = &lt;requests.sessions.Session object at 0x0000024D7AE37AA0&gt;</msg>
+<var>${ALIAS}</var>
+<arg>alias=lista_users</arg>
+<arg>url=${URL}/${FINAL_ENDPOINT}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-05-22T17:44:37.462077" elapsed="0.000000"/>
+</kw>
+<kw name="Session Exists" owner="RequestsLibrary">
+<arg>alias=lista_users</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" start="2024-05-22T17:44:37.463074" elapsed="0.000000"/>
+</kw>
+<arg>users?page=2</arg>
+<status status="PASS" start="2024-05-22T17:44:37.461080" elapsed="0.001994"/>
+</kw>
+<kw name="Quando envio a requisição para consultar usuários" owner="API_Resource">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-05-22T17:44:37.560481" level="INFO">GET Request : url=https://reqres.in/api/users?page=2 
+ path_url=/api/users?page=2 
+ headers={'User-Agent': 'python-requests/2.32.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-05-22T17:44:37.560481" level="INFO">GET Response : url=https://reqres.in/api/users?page=2 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 22 May 2024 20:44:37 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1714282455&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=AnSGCk8R7FpOXA0gGqeM14V0LGh8q5uoT5bmsIEqhoY%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1714282455&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=AnSGCk8R7FpOXA0gGqeM14V0LGh8q5uoT5bmsIEqhoY%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"406-ut0vzoCuidvyMf8arZpMpJ6ZRDw"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'HIT', 'Age': '7042', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '887fa52fe9100174-GRU', 'Content-Encoding': 'gzip'} 
+ body={"page":2,"per_page":6,"total":12,"total_pages":2,"data":[{"id":7,"email":"michael.lawson@reqres.in","first_name":"Michael","last_name":"Lawson","avatar":"https://reqres.in/img/faces/7-image.jpg"},{"id":8,"email":"lindsay.ferguson@reqres.in","first_name":"Lindsay","last_name":"Ferguson","avatar":"https://reqres.in/img/faces/8-image.jpg"},{"id":9,"email":"tobias.funke@reqres.in","first_name":"Tobias","last_name":"Funke","avatar":"https://reqres.in/img/faces/9-image.jpg"},{"id":10,"email":"byron.fields@reqres.in","first_name":"Byron","last_name":"Fields","avatar":"https://reqres.in/img/faces/10-image.jpg"},{"id":11,"email":"george.edwards@reqres.in","first_name":"George","last_name":"Edwards","avatar":"https://reqres.in/img/faces/11-image.jpg"},{"id":12,"email":"rachel.howell@reqres.in","first_name":"Rachel","last_name":"Howell","avatar":"https://reqres.in/img/faces/12-image.jpg"}],"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}} 
+ </msg>
+<msg time="2024-05-22T17:44:37.560481" level="INFO">C:\Python312\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-05-22T17:44:37.561477" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>alias=lista_users</arg>
+<arg>url=${URL}/users?page=2</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-05-22T17:44:37.463074" elapsed="0.098403"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-05-22T17:44:37.561477" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-05-22T17:44:37.561477" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-05-22T17:44:37.463074" elapsed="0.098403"/>
+</kw>
+<kw name="Então a requisição deve ocorrer com sucesso" owner="API_Resource">
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>${status_code}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2024-05-22T17:44:37.562472" elapsed="0.000998"/>
+</kw>
+<arg>200</arg>
+<status status="PASS" start="2024-05-22T17:44:37.562472" elapsed="0.000998"/>
+</kw>
+<kw name="E deve ser retornado a quantidade de registros corretamente" owner="API_Resource">
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-05-22T17:44:37.564465" level="INFO">Length is 6.</msg>
+<msg time="2024-05-22T17:44:37.564465" level="INFO">${qtde_retornada} = 6</msg>
+<var>${qtde_retornada}</var>
+<arg>${RESPONSE.json()['data']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-05-22T17:44:37.564465" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${qtde_esperada}</arg>
+<arg>${qtde_retornada}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-05-22T17:44:37.565463" elapsed="0.000000"/>
+</kw>
+<arg>${6}</arg>
+<status status="PASS" start="2024-05-22T17:44:37.563470" elapsed="0.001993"/>
+</kw>
+<doc>CARD - XXXX</doc>
+<tag>S01CT01</tag>
+<status status="PASS" start="2024-05-22T17:44:37.461080" elapsed="0.104383"/>
+</test>
+<doc>Suite de testes de API do site https://reqres.in/api</doc>
+<status status="PASS" start="2024-05-22T17:44:36.491446" elapsed="1.076132"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">S01CT01</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="S01 API">S01 API</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
