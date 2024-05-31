@@ -17,6 +17,17 @@ Quando envio a requisição para consultar usuários
     ${RESPONSE}    GET On Session    alias=lista_users    url=${URL}/users?page=2
     Set Test Variable    ${RESPONSE}
 
+Quando envio a requisição para criar um novo usuário
+    ${DADOS}    Create Dictionary    name=Mirian    job=QA
+    ${RESPONSE}    POST    ${URL}/users/${DADOS}
+
+Quando envio a requisição para excluir um usuário
+    ${RESPONSE}    DELETE    url=${URL}/users/2
+
+Quando envio a requisição para alterar job do usuário
+    ${DADOS}    Create Dictionary    name=Mirian    job=Tester
+    ${RESPONSE}    PUT    ${URL}/users/5/${DADOS}
+
 # --- ENTÃO ---
 Então a requisição deve ocorrer com sucesso    
     [Arguments]    ${status_code}
